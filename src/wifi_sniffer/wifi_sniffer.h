@@ -13,7 +13,7 @@ void wifi_sniffer_rx_packet(void *buf, wifi_promiscuous_pkt_type_t type);
 
 // State machine states
 void sniff_state();
-void adjust_channel_state();
+void adjust_channel_state(); 
 void increase_channel_state();
 void decrease_channel_state();
 

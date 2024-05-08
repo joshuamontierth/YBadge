@@ -5,6 +5,7 @@
 #include "colors.h"
 #include "wifi_sniffer.h"
 
+
 typedef struct {
     unsigned frame_ctrl : 16;
     unsigned duration_id : 16;
@@ -70,6 +71,9 @@ void wifi_sniffer_rx_packet(void *buf, wifi_promiscuous_pkt_type_t type) {
     // Parse radiotap header
     wifi_pkt_rx_ctrl_t header = (wifi_pkt_rx_ctrl_t)pkt->rx_ctrl;
     rssi = header.rssi;
+
+    
+    
 }
 
 int smooth(int value) {
@@ -105,10 +109,12 @@ void sniff_state() {
             sniffed_packet = false;
 
             // Map RSSI to 0 and 255
-            int value = map(rssi, -90, -65, 0, 255);
+            int value = map(rssi, -90, -40, 0, 255);
+            Serial.printf("RSSI: %d\n", rssi);
+            
 
             // Map value to rainbow color
-            RGBColor color = color_wheel(value);
+            RGBColor color = blue_shades(value);
 
             // Light up LEDs
             all_leds_set_color(color.red, color.green, color.blue);
@@ -123,11 +129,11 @@ void sniff_state() {
 
             // Come up with a value for the RSSI
             int smoothed_rssi = smooth(rssi);
-            int value = map(smoothed_rssi, -65, -85, 0, 255);
+            int value = map(smoothed_rssi, -90, -40, 0, 255);
             Serial.printf("Smoothed value: %d (%d)\n", smoothed_rssi, value);
 
             // Map value to rainbow color
-            RGBColor color = blue_to_red(value);
+            RGBColor color = blue_shades(value);
 
             // Light up LEDs
             all_leds_set_color(color.red, color.green, color.blue);
@@ -162,7 +168,7 @@ void increase_channel_state() {
 
     current_channel++;
     if (current_channel > 11) {
-        current_channel = 11;
+        current_channel = 1;
     }
 }
 
@@ -176,6 +182,6 @@ void decrease_channel_state() {
 
     current_channel--;
     if (current_channel < 1) {
-        current_channel = 1;
+        current_channel = 11;
     }
 }

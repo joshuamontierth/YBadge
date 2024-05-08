@@ -39,3 +39,21 @@ RGBColor blue_to_red(int blueShade) {
 
     return result;
 }
+
+RGBColor blue_shades(int blueShade) {
+    RGBColor result;
+
+    // Ensure that the blueShade is within the valid range (0-255)
+    if (blueShade < 0) {
+        blueShade = 0;
+    } else if (blueShade > 255) {
+        blueShade = 255;
+    }
+
+    // Map blue to red (assuming pure blue to pure red transition)
+    result.red = 0;
+    result.green = 0;
+    result.blue = blueShade;
+
+    return result;
+}
