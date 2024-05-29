@@ -8,7 +8,11 @@ static int rgb_loop_state = 0;
 static int rgb_loop_direction = 1;
 
 void light_show_init() {
-    Serial.begin(9600);
+    Serial.begin(115200);
+    pinMode(BUTTON1_PIN,INPUT);
+    pinMode(BUTTON2_PIN,INPUT);
+    pinMode(SWITCH1_PIN,INPUT);
+    pinMode(SWITCH2_PIN,INPUT);
     leds_init();
     timer_init();
 }

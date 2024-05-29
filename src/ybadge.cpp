@@ -44,8 +44,6 @@ bool buttons_get(uint8_t button_idx) {
         return !digitalRead(BUTTON1_PIN);
     case 2:
         return !digitalRead(BUTTON2_PIN);
-    case 3:
-        return !digitalRead(BUTTON3_PIN);
     default:
         return false;
     }

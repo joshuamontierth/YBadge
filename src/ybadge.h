@@ -10,14 +10,13 @@
  * your code.
  */
 #define TONE_PIN 33
-#define KNOB_PIN 14
+#define KNOB_PIN 9
 #define LED_PIN 5
 #define LED_COUNT 20
-#define SWITCH1_PIN 9
-#define SWITCH2_PIN 10
-#define BUTTON1_PIN 11
-#define BUTTON2_PIN 12
-#define BUTTON3_PIN 13
+#define SWITCH1_PIN 16
+#define SWITCH2_PIN 18
+#define BUTTON1_PIN 17
+#define BUTTON2_PIN 7
 
 ////////////////////////////// LEDs ///////////////////////////////////////////
 
